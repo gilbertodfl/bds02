@@ -35,6 +35,7 @@ public class CityController {
 		}
 		
 /*		
+ * Embora paginado seja melhor, o exercício pede que seja uma lista simples. 
 		@GetMapping
 		public ResponseEntity<Page<CityDTO>> findAll(Pageable pageable) {
 			PageRequest pageRequest = PageRequest.of( pageable.getPageNumber(), pageable.getPageSize() , Sort.by("name") );

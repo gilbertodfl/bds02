@@ -32,8 +32,9 @@ public class CityService {
 		
 	}
 		
-/*	
- 	
+/*
+ *  Embora paginado seja melhor, o exercício pede que seja uma lista simples.
+ *  	
 	@Transactional(readOnly = true)
 	public Page<CityDTO> findAllPaged(Pageable pageable) {
 		Page<City> page = repository.findAll(pageable);
