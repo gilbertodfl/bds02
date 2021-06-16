@@ -9,8 +9,6 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,19 +24,22 @@ public class CityService {
 	// Já instância : org.springframework.beans.factory.annotation.Autowired;
 	@Autowired
 	private CityRepository repository;
-	public List<CityDTO> findAll(){
+	
+  @Transactional(readOnly = true)
+  public List<CityDTO> findAll(){
 		List<City> list = repository.findAll(Sort.by("name"));
-		// o comando abaixo faz um "FOR" 
 		return list.stream().map( x -> new CityDTO(x)).collect(Collectors.toList());
 		
 	}
-	
+		
+/*	
+ 	
 	@Transactional(readOnly = true)
 	public Page<CityDTO> findAllPaged(Pageable pageable) {
-		Page<City> list = repository.findAll(pageable);
-		return list.map(x -> new CityDTO(x));
+		Page<City> page = repository.findAll(pageable);
+		return page.map(x -> new CityDTO(x)); 
 	}
-
+*/
 	@Transactional(readOnly = true)
 	public CityDTO findById(Long id) {
 		Optional<City> obj = repository.findById(id);

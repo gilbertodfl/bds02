@@ -56,5 +56,13 @@ public class CityControllerIT {
 		result.andExpect(jsonPath("$[0].name").value("Belo Horizonte"));
 		result.andExpect(jsonPath("$[1].name").value("Belém"));
 		result.andExpect(jsonPath("$[2].name").value("Brasília"));
+/*
+ * OBSERVAÇÃO IMPORTANTE: Como os find estão retornando lista, entao 
+ * o código acima é o que vale. Se fosse para retornar PAGEABEL, então ser a com o código abaixo. 
+ * Confira os cometários e códigos em CityService e CityController
+		result.andExpect(jsonPath("$.content[0].name").value("Belo Horizonte"));
+		result.andExpect(jsonPath("$.content[1].name").value("Belém"));
+		result.andExpect(jsonPath("$.content[2].name").value("Brasília"));
+*/
 	}
 }
